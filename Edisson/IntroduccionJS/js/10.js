@@ -14,11 +14,20 @@ const producto = {
     disponible : true
 }
 
+
+
+// console.log(producto.precio);
+// console.log(producto.nombreProducto);
+// console.log(producto.disponible);
+
+// // Otra sintaxis para mostrar una propiedad especifica de la variable objeto
+// console.log(producto['precio'])
+
+// Agregar nuevas propiedades
+producto.imagen = 'imagen.jpg';
+
+// Eliminar propiedades
+delete producto.imagen;
+
+// Mostrar en consola el objeto producto
 console.log(producto);
-
-console.log(producto.precio);
-console.log(producto.nombreProducto);
-console.log(producto.disponible);
-
-// Otra sintaxis para mostrar una propiedad especifica de la variable objeto
-console.log(producto['precio'])
