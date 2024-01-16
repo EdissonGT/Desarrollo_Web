@@ -37,4 +37,47 @@ for (let o = 0; o < carrito.length; o++) { // carrito.length para saber de cuant
 
 // While Loop
 
+
+// Ejemplo #1
+
+let k = 1; // Indice
+
+while(k <= 20) { // Condición
+    if (k % 2 === 0) {
+        console.log(`El numero ${k} es par`);
+    } else {
+        console.log(`El numero ${k} es impar`);
+    }
+    k++; // Incremento 
+}
+
+// Ejemplo #2
+
+let p = 0; // Indice
+
+while(p < carrito.length) { // Condición
+    console.log(carrito[p].nombre); // se agrega el nombre del Array, luego el iterador ".", para acceder a la propiedad.
+    p++; // Incremento 
+}
+
+// Ejemplo #2
+
+// Tiene que revisar que la condicion se cumpla para que el While se ejecute.
+let q = 50; // Indice
+
+while(q < 20) { // Condición
+    console.log('Desde el While Loop'); 
+    q++; // Incremento 
+}
+
 // Do While Loop
+
+let r = 1; // Interador
+
+do {
+    console.log(r);
+    r++;
+} while (r < 10); // Si cumple la condición
+
+// La diferencia entre Do While y el While, es que el Do While ejecuta el codigo al menos una vez y el
+// While no lo ejevuta si no se cumple la condición.
