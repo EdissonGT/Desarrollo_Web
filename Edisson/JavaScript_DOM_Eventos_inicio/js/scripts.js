@@ -108,13 +108,13 @@ const btnEnviar = document.querySelector('.boton--primario');
 // Este codigo sirve para registrarle un evento al boton "Enviar"
 
 // La funcion de evento se pasa en automatico al callback por el evento "click", cuando se utiliza el addEventListener
-btnEnviar.addEventListener('click', function(evento){
-    console.log(evento);
+// btnEnviar.addEventListener('click', function(evento){
+//     console.log(evento);
 
-    // Este codigo nos ayuda para Validar un Formulario
-    evento.preventDefault(); // Estamos previniendo la accion por defecto.
-    console.log('Enviando Formulario')
-});
+//     // Este codigo nos ayuda para Validar un Formulario
+//     evento.preventDefault(); // Estamos previniendo la accion por defecto.
+//     console.log('Enviando Formulario')
+// });
 
 // EL EVENTO DE SUBMIT
 
@@ -150,9 +150,21 @@ mensaje.addEventListener('input', leertexto);
 formulario.addEventListener('submit', function(evento){
     evento.preventDefault();
 
-    // Validar el formulario
+    // VALIDAR FORMULARIO
+    // ESTAMOS EXTRAYENDO LAS VARIABLES GLOBALES CON DESTRUCCION
+    const { nombre, email, mensaje } = datos;
+
+    if(nombre === '' || email === '' || mensaje === '') {
+        mostrarError('Todos los campos son obligatorios');
+
+        return; // RETURN CORTA LA EJECUCION DEL CODIGO, PORQUE SE ESTA CUMPLIENDO LA CODICION ASIGNADA
+    } 
+    
+    // CREA ALERTA DE ENVIAR CORRECTAMENTE
+    mostrarCorrecto('Se envio correctamente los datos'); // Se crea una nueva funcion porque el return del if anterior corta la ejecucion del codigo
 
     // Enviar el formualario
+    // console.log('Enviando Formulario');
 });
 
 function leertexto(e) {
@@ -163,7 +175,47 @@ function leertexto(e) {
     // e.target.id obtiene el identificador del campo de entrada que disparó el evento, y e.target.value obtiene el valor actual del campo de entrada.
 
 
-    console.log(datos);
+    // console.log(datos);
 };
 
+// Muestra un error en pantalla
 
+function mostrarError(mensaje) {
+    // console.log(mensaje);
+
+    // Estamos creando la etiqueta de PARRAFO
+    const error = document.createElement('P');
+    // Estamos pasando el parametro de mensaje para mostrarlo
+    error.textContent = mensaje;
+    // Estamos creando una clase llamda "error"
+    error.classList.add('error')
+
+    formulario.appendChild(error);
+
+    // Dewsaparezca despues de 5 segundos
+
+    setTimeout(() => {
+        error.remove(); // Se agrega la clase remove() que nos ayuda a remover el codigo HTML creado.
+    }, 5000); // el tiempo de 5 segundos
+};
+
+// Mostrar en Pantalla que se mandaron los datos correctamente
+
+function mostrarCorrecto(mensaje) {
+    // console.log(mensaje);
+
+    // Estamos creando la etiqueta de PARRAFO
+    const correcto = document.createElement('P');
+    // Estamos pasando el parametro de mensaje para mostrarlo
+    correcto.textContent = mensaje;
+    // Estamos creando una clase llamda "error"
+    correcto.classList.add('correcto')
+
+    formulario.appendChild(correcto);
+
+    // Dewsaparezca despues de 5 segundos
+
+    setTimeout(() => {
+        correcto.remove(); // Se agrega la clase remove() que nos ayuda a remover el codigo HTML creado.
+    }, 5000); // el tiempo de 5 segundos
+};
