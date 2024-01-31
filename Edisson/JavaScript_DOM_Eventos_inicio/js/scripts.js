@@ -70,6 +70,7 @@ console.log(nuevoEnlace);
 
 console.log(1);
 
+// EVENTOS QUE SE PUEDE EJECUTAR EN EL NAVEGADOR
 // 'addEventListener' una vez que se ejecuto el codigo de esta linea se ejecuta el siguiente codigo.
 
 window.addEventListener('load', function() { // load espera a que JS y los archivos que dependen del HMTL esten listos
@@ -97,3 +98,20 @@ function imprimir() {
 window.onscroll = function() {
     console.log('scrolling....')
 };
+
+
+// SELECCIONAR ELEMENTOS Y ASOCIALES UN EVENTO
+
+// Con este codigo estamos seleccionando el boton de enviar, seleccionando la clase donde esta el boton y agregandole una variable.
+const btnEnviar = document.querySelector('.boton--primario');
+
+// Este codigo sirve para registrarle un evento al boton "Enviar"
+
+// La funcion de evento se pasa en automatico al callback por el evento "click", cuando se utiliza el addEventListener
+btnEnviar.addEventListener('click', function(evento){
+    console.log(evento);
+
+    // Este codigo nos ayuda para Validar un Formulario
+    evento.preventDefault(); // Estamos previniendo la accion por defecto.
+    console.log('Enviando Formulario')
+});
