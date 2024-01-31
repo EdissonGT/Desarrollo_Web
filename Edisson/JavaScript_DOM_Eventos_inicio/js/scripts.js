@@ -116,6 +116,9 @@ btnEnviar.addEventListener('click', function(evento){
     console.log('Enviando Formulario')
 });
 
+// EL EVENTO DE SUBMIT
+
+
 // EVENTOS DE LOS INPUTS Y TEXTAREA
 
 const datos = {
@@ -128,6 +131,7 @@ const datos = {
 const nombre = document.querySelector('#nombre');
 const email = document.querySelector('#email');
 const mensaje = document.querySelector('#mensaje');
+const formulario = document.querySelector('.formulario');
 
 // con change, nos permite registrar lo que esta escribiendo pero lo muestra hasta que nos salimos del textarea
 // con "input", nos permite registrar si estamos escribiendo en tiempo real en el textarea
@@ -139,16 +143,27 @@ const mensaje = document.querySelector('#mensaje');
 // });
 
 nombre.addEventListener('input', leertexto);
-
 email.addEventListener('input', leertexto);
-
 mensaje.addEventListener('input', leertexto);
+
+// Se tiene que usar la propiedad submit para poder enviar el FORMULARIO
+formulario.addEventListener('submit', function(evento){
+    evento.preventDefault();
+
+    // Validar el formulario
+
+    // Enviar el formualario
+});
 
 function leertexto(e) {
     // Estamos ingresando al evento del objeto, luego al target que es el ID, luego lo que se esta escribiendo con Value.
     // console.log(e.target.value);
 
     datos[e.target.id] = e.target.value;
+    // e.target.id obtiene el identificador del campo de entrada que disparó el evento, y e.target.value obtiene el valor actual del campo de entrada.
+
 
     console.log(datos);
-}
+};
+
+
