@@ -65,3 +65,35 @@ navegacion.appendChild(nuevoEnlace);
 
 
 console.log(nuevoEnlace);
+
+// EVENTOS
+
+console.log(1);
+
+// 'addEventListener' una vez que se ejecuto el codigo de esta linea se ejecuta el siguiente codigo.
+
+window.addEventListener('load', function() { // load espera a que JS y los archivos que dependen del HMTL esten listos
+    console.log(2);    // load espera a que se descague todo el HTML y las imagenes, CSS y JS
+});
+
+window.onload = function() {
+    console.log(3)
+};
+
+
+document.addEventListener('DOMContentLoaded', function() { // Solo espera a que se descargue el HTML, pero no espera que se descargue CSS, JS o IMG.
+    console.log(4)
+});
+
+window.addEventListener('load',imprimir);
+
+console.log(5);
+
+function imprimir() {
+    console.log(12)
+};
+
+// window es selecionar mas que solo el HMTL, y accedemos a la propiedad de onscroll, para que cuando usemos el scroll mostremos en pantalla el mensaje
+window.onscroll = function() {
+    console.log('scrolling....')
+};
