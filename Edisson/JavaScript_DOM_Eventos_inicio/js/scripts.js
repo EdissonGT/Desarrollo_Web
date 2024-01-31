@@ -1,6 +1,6 @@
 // Todo los selectores empiezon con document.
 
-// querySelector
+// #1 querySelector
 
 const heading = document.querySelector('.header__texto h2'); //Retorna 0 o 1 Elementos
 
@@ -13,7 +13,7 @@ console.log(heading);
 
 // console.log(enlace);
 
-// querySelectorAll
+// #2 querySelectorAll
 
 const enlaces = document.querySelectorAll('.navegacion a'); // Seleccionamos la clase padre y luego la etiqueta de enlace a
 console.log(enlaces[0]);
@@ -28,8 +28,40 @@ enlaces[0].classList.remove('navegacion__enlace'); // Con la propiedad classList
 
 console.log(enlaces[0]);
 
-// getElementById
+// #3 getElementById
 
 const heading2 = document.getElementById('heading'); // Podemos seleccionar el codigo html con el ID de la etiqueta creada.
 
 console.log(heading2);
+
+
+// GENERAR UN NUEVO ENLACE CON JS
+
+// Siempre que vayamos a crear una etiqueta en JS, tiene que estar en mayuscula.
+
+const nuevoEnlace = document.createElement('A') // con createElement vamos a crear codigo en JS para HTML
+
+// Agregar el href
+
+nuevoEnlace.href = 'nuevo-enlace.html';
+
+// Agregar el texto
+
+nuevoEnlace.textContent = 'Nuevo Enlace';
+
+// Agregar la clase
+
+nuevoEnlace.classList.add('class__nueva');
+
+/* <a href="nosotros.html" class="nuevo-enlace">Nosotros</a> */
+
+
+// Agregarlo al documento
+
+const navegacion = document.querySelector('.navegacion');
+
+// "appenChild" nos ayuda a insertar codigo HTML creando con JS.
+navegacion.appendChild(nuevoEnlace);
+
+
+console.log(nuevoEnlace);
