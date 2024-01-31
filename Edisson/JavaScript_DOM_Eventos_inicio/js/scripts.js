@@ -115,3 +115,40 @@ btnEnviar.addEventListener('click', function(evento){
     evento.preventDefault(); // Estamos previniendo la accion por defecto.
     console.log('Enviando Formulario')
 });
+
+// EVENTOS DE LOS INPUTS Y TEXTAREA
+
+const datos = {
+    nombre: '',
+    email: '',
+    mensaje: ''
+}
+
+// se usa el # porque estamos selccionando el ID
+const nombre = document.querySelector('#nombre');
+const email = document.querySelector('#email');
+const mensaje = document.querySelector('#mensaje');
+
+// con change, nos permite registrar lo que esta escribiendo pero lo muestra hasta que nos salimos del textarea
+// con "input", nos permite registrar si estamos escribiendo en tiempo real en el textarea
+// con el "e", estamos mandando el evento a consola cada que escribimos una letra.
+
+// nombre.addEventListener('input', function(e) {
+//     // Estamos ingresando al evento del objeto, luego al target que es el ID, luego lo que se esta escribiendo con Value
+//     console.log(e.target.value)
+// });
+
+nombre.addEventListener('input', leertexto);
+
+email.addEventListener('input', leertexto);
+
+mensaje.addEventListener('input', leertexto);
+
+function leertexto(e) {
+    // Estamos ingresando al evento del objeto, luego al target que es el ID, luego lo que se esta escribiendo con Value.
+    // console.log(e.target.value);
+
+    datos[e.target.id] = e.target.value;
+
+    console.log(datos);
+}
