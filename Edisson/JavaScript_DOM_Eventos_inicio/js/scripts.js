@@ -73,20 +73,20 @@ console.log(1);
 // EVENTOS QUE SE PUEDE EJECUTAR EN EL NAVEGADOR
 // 'addEventListener' una vez que se ejecuto el codigo de esta linea se ejecuta el siguiente codigo.
 
-window.addEventListener('load', function() { // load espera a que JS y los archivos que dependen del HMTL esten listos
+window.addEventListener('load', function () { // load espera a que JS y los archivos que dependen del HMTL esten listos
     console.log(2);    // load espera a que se descague todo el HTML y las imagenes, CSS y JS
 });
 
-window.onload = function() {
+window.onload = function () {
     console.log(3)
 };
 
 
-document.addEventListener('DOMContentLoaded', function() { // Solo espera a que se descargue el HTML, pero no espera que se descargue CSS, JS o IMG.
+document.addEventListener('DOMContentLoaded', function () { // Solo espera a que se descargue el HTML, pero no espera que se descargue CSS, JS o IMG.
     console.log(4)
 });
 
-window.addEventListener('load',imprimir);
+window.addEventListener('load', imprimir);
 
 console.log(5);
 
@@ -95,7 +95,7 @@ function imprimir() {
 };
 
 // window es selecionar mas que solo el HMTL, y accedemos a la propiedad de onscroll, para que cuando usemos el scroll mostremos en pantalla el mensaje
-window.onscroll = function() {
+window.onscroll = function () {
     console.log('scrolling....')
 };
 
@@ -147,21 +147,21 @@ email.addEventListener('input', leertexto);
 mensaje.addEventListener('input', leertexto);
 
 // Se tiene que usar la propiedad submit para poder enviar el FORMULARIO
-formulario.addEventListener('submit', function(evento){
+formulario.addEventListener('submit', function (evento) {
     evento.preventDefault();
 
     // VALIDAR FORMULARIO
     // ESTAMOS EXTRAYENDO LAS VARIABLES GLOBALES CON DESTRUCCION
     const { nombre, email, mensaje } = datos;
 
-    if(nombre === '' || email === '' || mensaje === '') {
-        mostrarError('Todos los campos son obligatorios');
+    if (nombre === '' || email === '' || mensaje === '') {
+        mostrarAlerta('Todos los campos son obligatorios', true);
 
         return; // RETURN CORTA LA EJECUCION DEL CODIGO, PORQUE SE ESTA CUMPLIENDO LA CODICION ASIGNADA
-    } 
-    
+    }
+
     // CREA ALERTA DE ENVIAR CORRECTAMENTE
-    mostrarCorrecto('Se envio correctamente los datos'); // Se crea una nueva funcion porque el return del if anterior corta la ejecucion del codigo
+    mostrarAlerta('Se envio correctamente los datos'); // Se crea una nueva funcion porque el return del if anterior corta la ejecucion del codigo
 
     // Enviar el formualario
     // console.log('Enviando Formulario');
@@ -178,44 +178,57 @@ function leertexto(e) {
     // console.log(datos);
 };
 
-// Muestra un error en pantalla
+function mostrarAlerta(mensaje, error = null) {
+    const alerta = document.createElement('P');
+    alerta.textContent = mensaje;
 
-function mostrarError(mensaje) {
+    if (error) {
+        alerta.classList.add('error');
+    } else {
+        alerta.classList.add('correcto')
+    }
+
+    formulario.appendChild(alerta);
+
+    // Desaparezca despues de 5 segundos
+
+    setTimeout(() => {
+        alerta.remove(); // Se agrega la clase remove() que nos ayuda a remover el codigo HTML creado.
+    }, 5000); // el tiempo de 5 segundos
+}
+
+// Muestra un error en pantalla
+// function mostrarError(mensaje) {
     // console.log(mensaje);
 
     // Estamos creando la etiqueta de PARRAFO
-    const error = document.createElement('P');
+    // const error = document.createElement('P');
     // Estamos pasando el parametro de mensaje para mostrarlo
-    error.textContent = mensaje;
+    // error.textContent = mensaje;
     // Estamos creando una clase llamda "error"
-    error.classList.add('error')
+    // error.classList.add('error')
 
-    formulario.appendChild(error);
+    // formulario.appendChild(error);
 
-    // Dewsaparezca despues de 5 segundos
 
-    setTimeout(() => {
-        error.remove(); // Se agrega la clase remove() que nos ayuda a remover el codigo HTML creado.
-    }, 5000); // el tiempo de 5 segundos
-};
+// };
 
 // Mostrar en Pantalla que se mandaron los datos correctamente
-
-function mostrarCorrecto(mensaje) {
+// function mostrarCorrecto(mensaje) {
     // console.log(mensaje);
 
     // Estamos creando la etiqueta de PARRAFO
-    const correcto = document.createElement('P');
+    // const correcto = document.createElement('P');
     // Estamos pasando el parametro de mensaje para mostrarlo
-    correcto.textContent = mensaje;
+    // correcto.textContent = mensaje;
     // Estamos creando una clase llamda "error"
-    correcto.classList.add('correcto')
+    // correcto.classList.add('correcto')
 
-    formulario.appendChild(correcto);
+    // formulario.appendChild(correcto);
 
-    // Dewsaparezca despues de 5 segundos
+    // Desaparezca despues de 5 segundos
 
-    setTimeout(() => {
-        correcto.remove(); // Se agrega la clase remove() que nos ayuda a remover el codigo HTML creado.
-    }, 5000); // el tiempo de 5 segundos
-};
+//     setTimeout(() => {
+//         correcto.remove(); // Se agrega la clase remove() que nos ayuda a remover el codigo HTML creado.
+//     }, 5000); // el tiempo de 5 segundos
+// };
